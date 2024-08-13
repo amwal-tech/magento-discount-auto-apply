@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Amwal\Payments\Model\Checkout\GetQuote">
+        <plugin name="amwal_payments_get_response_data" type="Amwal\Discount\Plugin\Button\GetResponseData" sortOrder="10"/>
+    </type>
+</config>
