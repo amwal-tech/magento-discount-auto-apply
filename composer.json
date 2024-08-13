@@ -4,8 +4,8 @@
   "description": "Amwal Discount Auto Apply is a Magento 2 plugin that allows you to automatically apply discounts to the cart based on the user's eligibility.",
   "type": "magento2-module",
   "require": {
-    "../../../../vendor/magento/framework": "*",
-    "../../../../vendor/amwal/payments": "*"
+    "magento/framework": "*",
+    "amwal/payments": "*"
   },
   "license": [
     "OSL-3.0"
