@@ -43,6 +43,7 @@ To ensure that the Amwal Discount Auto Apply plugin works correctly, you need to
    * Active: Set the rule to "Yes" to activate it.
    * Websites: Select the websites where the rule should be applied.
    * Customer Groups: Select the customer groups that will be eligible for the discount.
+   * Coupon: Select "Specific Coupon" from the dropdown menu and enter a unique coupon code (e.g., "AMWAL_DISCOUNT"). This coupon code will be automatically applied by the plugin.
 5. Conditions:
    * In the Conditions tab, define the conditions under which the discount should be applied. For the Amwal Discount plugin to work, ensure that the rule includes a condition related to Amwal Payments.
    * Click on the green plus icon to add a new condition. Choose `Payment Method` from the options, then select the payment method related to Amwal (e.g., "Amwal Payments").
