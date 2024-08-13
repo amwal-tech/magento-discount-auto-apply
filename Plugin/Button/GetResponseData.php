@@ -39,12 +39,25 @@ class GetResponseData
         array $availableRates
     ): array {
         $amwalDiscountRule = $this->getActiveAmwalDiscountRule();
-        if ($amwalDiscountRule && $amwalDiscountRule->getCode() && !$quote->getCouponCode()) {
-            // Apply the coupon code associated with the discount rule
-            $quote->setCouponCode($amwalDiscountRule->getCode());
+        if ($amwalDiscountRule && !$quote->getCouponCode()) {
+            if ($amwalDiscountRule->getCode()) {
+                // Apply the coupon code associated with the discount rule
+                $quote->setCouponCode($amwalDiscountRule->getCode());
+            } else {
+                // Manually apply the rule without a coupon code
+                $appliedRuleIds = $quote->getAppliedRuleIds();
+                $appliedRuleIdsArray = $appliedRuleIds ? explode(',', $appliedRuleIds) : [];
+
+                if (!in_array($amwalDiscountRule->getRuleId(), $appliedRuleIdsArray)) {
+                    $appliedRuleIdsArray[] = $amwalDiscountRule->getRuleId();
+                    $quote->setAppliedRuleIds(implode(',', $appliedRuleIdsArray));
+                }
+            }
+
+            // Ensure that the rule's conditions are applied to the quote
             $quote->setTotalsCollectedFlag(false);
-            $quote->collectTotals(); // Avoid using if not necessary at this stage
-            $quote->save(); // Save only when necessary
+            $quote->collectTotals();
+            $quote->save();
         }
 
         // Return the modified arguments
